@@ -27,19 +27,19 @@ const RestaurantCard = ({restaurant}) => {
 
     const handleClick = () => {
         if (cartItems.length > 0 && cartRestaurantId !== location_id){
-            const confirmSwitch = window.confirm(
+          /*   const confirmSwitch = window.confirm(
                 `Your cart contains items from ${cartRestaurantName}. ` +
                 `Do you want to discard your selection and add items from ${location_name}?`
-            )
+            ) */
 
-            if (!confirmSwitch) {
+            /* if (!confirmSwitch) {
                 return;
-            }
-            else{
-                dispatch(clearCart()); 
-            }
+            } */
+            // else{
+               /*  dispatch(clearCart());  */
+            // }
         } 
-        /* dispatch(setSelectedRestaurant(restaurant)); */
+        // dispatch(setSelectedRestaurant(restaurant));
         navigate(`/restaurant/${location_id}`, { state: {restaurant } });
   };
 

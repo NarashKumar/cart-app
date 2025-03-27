@@ -1,27 +1,47 @@
 import React from "react";
 import { Plus } from "lucide-react";
-import { RES_IMAGE_URL } from "../utils/constants"; // Ensure this is defined
-import { useDispatch } from "react-redux";
-import { addToCart } from "../utils/redux/cartSlice"; // Ensure this is defined
+import { RES_IMAGE_URL } from "../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, clearCart } from "../utils/redux/cartSlice";
+
 const RestaurantMenu = ({restaurant}) => {
-  // const restaurant = useSelector((state) => state.selectedRestaurant.selectedRestaurant);
-  // Extract menu_items from the first category if available
   const dispatch = useDispatch();
+  const { 
+    items: cartItems, 
+    restaurantId: cartRestaurantId, 
+    restaurantName 
+  } = useSelector((state) => state.cart);
+
+  // Ensure menu_items exists, default to empty array
   const { menu_items } = restaurant?.categories?.[0] || { menu_items: [] };
-  //console.log(menu_items);
 
   const handleAdd = (item) => {
-    dispatch(
-      addToCart({
-        menu_id: item.menu_id,
-        menu_name: item.menu_name,
-        menu_price: item.menu_price,
-        restaurantId: restaurant.location_id, // Add restaurant ID
-        restaurantName: restaurant.location_name // Add restaurant name
-      })
-    );
-  }
+    // If cart has items from a different restaurant
+    if (cartItems.length > 0 && cartRestaurantId && cartRestaurantId !== restaurant.location_id) {
+      const confirmSwitch = window.confirm(
+        `Your cart contains items from ${restaurantName}.\n` +
+        `Do you want to clear it and add items from ${restaurant.location_name}?`
+      );
+      
+      if (confirmSwitch) {
+        dispatch(clearCart());
+      } else {
+        return; // Exit if user cancels
+      }
+    }
   
+    // Add item to cart with full restaurant details
+    dispatch(addToCart({
+      menu_id: item.menu_id,
+      menu_name: item.menu_name,
+      menu_price: item.menu_price,
+      restaurantId: restaurant.location_id,
+      restaurantName: restaurant.location_name,
+      restaurantDetails: restaurant // Pass full restaurant object
+    }));
+  };
+
+
   return (
     <div className="res-container bg-gray-200 h-full rounded-lg">
       <div className="bg-[#ff4500] text-white text-center py-3 font-semibold text-2xl rounded-t-lg">
@@ -69,6 +89,6 @@ const RestaurantMenu = ({restaurant}) => {
       </div>
     </div>
   );
-};
+}
 
 export default RestaurantMenu;

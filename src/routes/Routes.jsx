@@ -4,6 +4,7 @@ import RestaurantDetails from "../components/RestaurantDetails";
 import Header from "../components/Header";
 import AppLayout from "../layouts/AppLayout";
 import Body from "../components/Body";
+import CartPage from "../components/CartPage";
 
 export const routes = createBrowserRouter([
     {
@@ -11,7 +12,15 @@ export const routes = createBrowserRouter([
         element: <AppLayout/>,
         children: [
             {index: true, element: <Body />},
-            { path: "restaurant/:resId", element: <RestaurantDetails /> },
+            { path: "restaurant/:resId", element: <RestaurantDetails />,
+                loader: ({ params }) => {
+                    if (!params.resId) {
+                      throw new Response("Not Found", { status: 404 });
+                    }
+                    return null;
+                  }
+             },
+            { path: "cart", element: <CartPage /> }
            /*  { path: "/orderneat", element: <OrdernEatHome />}, */
         ]
     }
