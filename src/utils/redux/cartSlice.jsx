@@ -19,9 +19,9 @@ const cartSlice = createSlice({
       if (state.items.length === 0) {
         state.restaurantId = restaurantId;
         state.restaurantName = restaurantName;
+        state.restaurantDetails = restaurantDetails; // Store full details
       }
 
-      // action.payload => { menu_id, menu_name, menu_price }
       const existingItem = state.items.find(
         (item) => item.menu_id === menu_id
       );
@@ -49,22 +49,28 @@ const cartSlice = createSlice({
     },
 
     decrementQuantity: (state, action) => {
-      // action.payload => menu_id
       const item = state.items.find((item) => item.menu_id === action.payload);
       if (item) {
         if (item.quantity > 1) {
           item.quantity -= 1;
         } else {
-          // If quantity is 1 and user wants to decrement, remove item
           state.items = state.items.filter(
             (item) => item.menu_id !== action.payload
           );
+          if (state.items.length === 0) {
+            state.restaurantId = null;
+            state.restaurantName = null;
+            state.restaurantDetails = null; // Clear when cart is empty
+          }
         }
       }
     },
+
     removeItem: (state, action) => {
-      // action.payload => menu_id
       state.items = state.items.filter((item) => item.menu_id !== action.payload);
+      if (state.items.length === 0) {
+        state.restaurantId = null;
+        state.restaurantName = null;
         state.restaurantDetails = null; // Clear when cart is empty
       }
     },

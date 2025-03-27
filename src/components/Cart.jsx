@@ -14,7 +14,6 @@ const Cart = () => {
   if (cartItems.length === 0) {
     return (
       <>
-        <div className="cart-details flex flex-col items-center rounded-lg h-150 ">
         <div className="cart-details flex flex-col items-center rounded-lg h-full overflow-hidden ">
           <div className="bg-gray-200 rounded-lg shadow-lg    w-full mx-auto h-full">
             <div className="bg-[#ff4500] text-white  rounded-t-lg">
