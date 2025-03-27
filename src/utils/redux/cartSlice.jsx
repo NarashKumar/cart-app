@@ -8,6 +8,8 @@ const initialState = {
   restaurantDetails: null // Added to store full restaurant object
 };
 
+// console.log(initialState.restaurantDetails)
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
