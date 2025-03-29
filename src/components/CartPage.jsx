@@ -34,17 +34,17 @@ const CartPage = () => {
 
     return (
         <div className="container mx-auto p-4 mt-20">
-            <h1 className="text-3xl font-bold mb-6">
+            <h1 className="lg:text-3xl md:text-2xl text-lg font-bold mb-6">
                 {cartItems.length > 0 
                     ? `Your Cart (${restaurantName})` 
                     : 'Cart is Empty'}
             </h1>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden ">
                 <Cart />
             </div>
             <button 
                 onClick={handleBack}
-                className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mt-4"
+                className="hover:cursor-pointer bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mt-4"
             >
                 {restaurantId ? 'Back to Restaurant' : 'Back to Home'}
             </button>

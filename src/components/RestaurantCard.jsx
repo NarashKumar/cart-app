@@ -3,13 +3,11 @@ import { RES_IMAGE_URL } from '../utils/constants'
 import deliveryTime from '../assets/clock.png'
 import locationImg from '../assets/google-maps.png'
 import { useNavigate } from 'react-router'
-import { useSelector, useDispatch } from 'react-redux'
-import { clearCart } from '../utils/redux/cartSlice'
+import { useSelector } from 'react-redux'
 
 
 const RestaurantCard = ({restaurant}) => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
  const { 
     items: cartItems,
     restaurantId: cartRestaurantId,
@@ -48,8 +46,9 @@ const RestaurantCard = ({restaurant}) => {
     
         <div 
         onClick={handleClick}
-        className="restaurant-card flex flex-col justify-between  bg-gray-200 shadow-lg rounded-lg p-4 m-2 w-84 h-80
-        transition-transform duration-300 ease-in-out transform hover:scale-95 hover:shadow-xl cursor-pointer">
+        className="restaurant-card flex flex-col justify-between  bg-gray-200 shadow-lg rounded-lg p-4 m-2 lg:w-84 h-80
+        transition-transform duration-300 ease-in-out transform hover:scale-95 hover:shadow-xl cursor-pointer
+        md:w-[47%] sm:w-[47%] w-full">
             <div className="image-container w-full h-44">
                 <img className="rounded-lg w-full h-full object-cover" src={RES_IMAGE_URL+profile_image} alt={location_name} />
                 <h2 className="pt-3 text-xl font-semibold">{location_name}</h2>

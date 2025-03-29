@@ -9,7 +9,7 @@ const ShimmerRestaurants = () => {
       {shimmerCards.map((_, index) => (
         <div
           key={index}
-          className="restaurant-card bg-gray-200 shadow-lg rounded-lg p-4 m-2 w-84 h-80 animate-pulse"
+          className="restaurant-card flex flex-col justify-between bg-gray-200 shadow-lg rounded-lg p-4 m-2 w-102 sm:w-[47%] md:w-76 lg:w-84 h-70 animate-pulse"
         ></div>
       ))}
     </>

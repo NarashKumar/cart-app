@@ -56,7 +56,7 @@ const RestaurantDetails = () => {
       <div className="w-full flex flex-col gap-5">
         <div className="res-details overflow-hidden flex flex-col items-center rounded-lg bg-gray-200 w-full">
           <div className="bg-[#ff4500] w-full text-white rounded-t-lg">
-            <h2 className="p-4 text-2xl text-center font-bold">
+            <h2 className="p-4 lg:text-2xl md:text-lg text-center font-bold">
               {location_name}
             </h2>
           </div>

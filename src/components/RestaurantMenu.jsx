@@ -44,7 +44,7 @@ const RestaurantMenu = ({restaurant}) => {
 
   return (
     <div className="res-container bg-gray-200 h-full rounded-lg">
-      <div className="bg-[#ff4500] text-white text-center py-3 font-semibold text-2xl rounded-t-lg">
+      <div className="bg-[#ff4500] text-white text-center py-3 font-semibold lg:text-2xl md:text-lg rounded-t-lg">
         Menu
       </div>
       <div className="h-full p-4 overflow-auto">
@@ -62,10 +62,10 @@ const RestaurantMenu = ({restaurant}) => {
                 />
               </div>
               <div className="flex-grow min-w-0">
-                <h3 className="text-lg font-medium truncate">
+                <h3 className="lg:text-lg md:text-md text-xs font-medium lg:truncate">
                   {item.menu_name}
                 </h3>
-                <p className="text-sm text-gray-600 truncate">
+                <p className="lg:text-sm md:text-sm  text-xs text-gray-600 lg:truncate">
                   {item.menu_description || ""}
                 </p>
               </div>

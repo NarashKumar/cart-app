@@ -5,7 +5,7 @@ import ShimmerRestaurants from './ui/ShimmerRestaurants';
 
 
 const Body = () => {
-  const { data, error, isLoading } = useGetNearbyRestaurantsQuery();
+  const { data, isLoading } = useGetNearbyRestaurantsQuery();
   //console.log("data", data);
   const restaurants = data?.result || [];
   //console.log(restaurants);
@@ -20,9 +20,9 @@ const Body = () => {
        
   return (
     // <div className="pt-20">
-    <div className="body w-5/6  m-auto">
-      <h1 className="p-4 text-3xl font-bold">Restaurants Nearby:</h1>
-      <div className=" p-2 restaurants flex flex-wrap justify-between mt-2 perspective-distant">
+    <div className="body flex lg:w-5/6 lg:m-auto md:w-5/6 md:flex-wrap sm:w-5/6 sm:flex-wrap flex-wrap">
+      <h1 className="p-4 text-3xl font-bold lg:ml-0 md:ml-12">Restaurants Nearby:</h1>
+      <div className=" restaurants flex flex-wrap md:justify-around md:relative md:left-15 md:right-15 lg:static lg:left-0 lg-right-0 lg:justify-between lg:mt-2 lg:perspective-distant">
         {isLoading ? <ShimmerRestaurants />
           : restaurants.map((restaurant) => (
             <RestaurantCard key={restaurant?.location_id} restaurant={restaurant} />
