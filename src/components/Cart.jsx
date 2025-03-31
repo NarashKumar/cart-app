@@ -20,7 +20,7 @@ const Cart = () => {
               <h2 className="lg:text-2xl md:text-xl text-md font-semibold text-center p-4 ">My Order</h2>
             </div>
   
-            <div className="mt-8 flex flex-col items-center justify-center h-full">
+            <div className="mt-8 flex flex-col items-center justify-center  h-full">
               <p className="text-gray-600 text-lg h-32">
                 There are no menus added in your cart.
               </p>
